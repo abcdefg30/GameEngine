@@ -124,8 +124,9 @@ public class PhysicComponent extends Component {
 		addCollisionListener(g);
 	}
 
-	public void allowJumping(float jumpForce, int duration) {
+	public void allowJumping(float jumpForce, int duration, int jumpKey) {
 		JumpHelper h = new JumpHelper(jumpForce, duration);
+		h.JumpKey = jumpKey;
 		addUpdateListener(h);
 		addCollisionListener(h);
 	}
