@@ -1,6 +1,3 @@
-/**
- * 
- */
 package gameengine.components;
 
 import far.math.vec.Vec3f;
@@ -25,7 +22,7 @@ public abstract class ActionComponent extends Component implements ICollisionLis
 	public abstract void action();
 
 	public void move(float speed, int keyLeft, int keyRight, int keyUp, int keyDown) {
-		
+
 		float xmov = 0.0f;
 		float ymov = 0.0f;
 

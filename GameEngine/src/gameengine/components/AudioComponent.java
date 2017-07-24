@@ -1,6 +1,3 @@
-/**
- * 
- */
 package gameengine.components;
 
 import org.lwjgl.openal.AL10;

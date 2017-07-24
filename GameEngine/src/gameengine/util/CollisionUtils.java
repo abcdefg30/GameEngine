@@ -19,6 +19,7 @@ public class CollisionUtils {
 	public static final int EDGE_BOTTOM_RIGHT = 8;
 	public static final int OTHER_PLAYER = 9;
 	public static final int STATIC = 10;
+	public static final int ENEMY = 11;
 
 	public static boolean CanCollide(PhysicComponent a, PhysicComponent b) {
 		if (a.OwnCollisionTypes.contains(NO_COLLISION) || b.OwnCollisionTypes.contains(NO_COLLISION))
@@ -63,18 +64,18 @@ public class CollisionUtils {
 		float posY = ph.getTransform().getPosition().y + velY;
 		int type = CollisionUtils.NO_COLLISION;
 
-		if (posX >= Game.camera.x * 2 + mxr && velX >= 0) {
+		if (posX >= Game.camera.x + mxr && velX >= 0) {
 			type = CollisionUtils.EDGE_RIGHT;
-		} else if (posX <= Game.camera.x * 2 - mxr && velX <= 0) {
+		} else if (posX <= Game.camera.x - mxr && velX <= 0) {
 			type = CollisionUtils.EDGE_LEFT;
 		}
 
-		if (posY >= Game.camera.y * 2 + myr && velY >= 0) {
+		if (posY >= Game.camera.y + myr && velY >= 0) {
 			if (type == CollisionUtils.NO_COLLISION)
 				return CollisionUtils.EDGE_TOP;
 
 			return type == CollisionUtils.EDGE_RIGHT ? CollisionUtils.EDGE_TOP_RIGHT : CollisionUtils.EDGE_TOP_LEFT;
-		} else if (posY <= Game.camera.y * 2 - myr && velY <= 0) {
+		} else if (posY <= Game.camera.y - myr && velY <= 0) {
 			if (type == CollisionUtils.NO_COLLISION)
 				return CollisionUtils.EDGE_BOTTOM;
 
@@ -124,48 +125,5 @@ public class CollisionUtils {
 		}
 
 		return mov;
-	}
-
-	// Returns the position of the edge
-	public static Vec3f getEdgePosition(int collisionType, PhysicComponent ph) {
-		float mxr = ph.mxr + 0.2f;
-		float myr = ph.myr + 0.2f;
-		Vec3f pos = new Vec3f(ph.getTransform().getPosition().x, ph.getTransform().getPosition().y, 0);
-
-		switch (collisionType) {
-		case CollisionUtils.EDGE_RIGHT:
-			pos.x = Game.camera.x * 2 + mxr;
-			break;
-		case CollisionUtils.EDGE_LEFT:
-			pos.x = Game.camera.x * 2 - mxr;
-			break;
-		case CollisionUtils.EDGE_TOP:
-			pos.y = Game.camera.y * 2 + myr;
-			break;
-		case CollisionUtils.EDGE_BOTTOM:
-			pos.y = Game.camera.y * 2 - myr;
-			break;
-		case CollisionUtils.EDGE_TOP_LEFT:
-			pos.x = Game.camera.x * 2 - mxr;
-			pos.y = Game.camera.y * 2 + myr;
-			break;
-		case CollisionUtils.EDGE_TOP_RIGHT:
-			pos.x = Game.camera.x * 2 + mxr;
-			pos.y = Game.camera.y * 2 + myr;
-			break;
-		case CollisionUtils.EDGE_BOTTOM_LEFT:
-			pos.x = Game.camera.x * 2 - mxr;
-			pos.y = Game.camera.y * 2 - myr;
-			break;
-		case CollisionUtils.EDGE_BOTTOM_RIGHT:
-			pos.x = Game.camera.x * 2 + mxr;
-			pos.y = Game.camera.y * 2 - myr;
-			break;
-		case CollisionUtils.NO_COLLISION:
-		default:
-			// Nothing happens for now
-		}
-
-		return pos;
 	}
 }

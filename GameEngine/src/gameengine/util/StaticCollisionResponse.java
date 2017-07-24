@@ -1,6 +1,3 @@
-/**
- * 
- */
 package gameengine.util;
 
 import far.math.vec.Vec2f;

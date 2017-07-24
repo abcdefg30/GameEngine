@@ -4,10 +4,12 @@ import org.lwjgl.glfw.GLFW;
 import far.math.vec.Vec2f;
 import far.math.vec.Vec3f;
 import gameengine.Engine;
+import gameengine.components.AudioComponent;
 import gameengine.components.PhysicComponent;
 
 public class JumpHelper implements IUpdateListener, ICollisionListener {
 
+	public AudioComponent JumpSound;
 	public int JumpKey = GLFW.GLFW_KEY_UP;
 
 	boolean isJumping;
@@ -43,6 +45,8 @@ public class JumpHelper implements IUpdateListener, ICollisionListener {
 
 			isJumping = true;
 			currentDuration = maxDuration;
+			if (JumpSound != null)
+				JumpSound.play(0.3f);
 		}
 
 		currentDuration--;

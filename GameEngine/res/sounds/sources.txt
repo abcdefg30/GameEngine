@@ -1,0 +1,5 @@
+Credit for the following file(s) to:
+
+blast.wav : http://soundbible.com/538-Blast.html
+explosion.wav : http://soundbible.com/456-Explosion-2.html
+laser.wav : http://soundbible.com/472-Laser-Blasts.html

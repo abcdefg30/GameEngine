@@ -1,32 +1,12 @@
-/**
- * 
- */
 package gameengine.components;
 
-import static org.lwjgl.opengl.GL11.GL_FLOAT;
-import static org.lwjgl.opengl.GL11.GL_TEXTURE_2D;
 import static org.lwjgl.opengl.GL11.GL_TRIANGLES;
 import static org.lwjgl.opengl.GL11.GL_UNSIGNED_INT;
-import static org.lwjgl.opengl.GL11.glBindTexture;
 import static org.lwjgl.opengl.GL11.glDrawElements;
-import static org.lwjgl.opengl.GL15.GL_ARRAY_BUFFER;
-import static org.lwjgl.opengl.GL15.GL_ELEMENT_ARRAY_BUFFER;
-import static org.lwjgl.opengl.GL15.GL_STATIC_DRAW;
-import static org.lwjgl.opengl.GL15.glBindBuffer;
-import static org.lwjgl.opengl.GL15.glBufferData;
-import static org.lwjgl.opengl.GL20.glEnableVertexAttribArray;
-import static org.lwjgl.opengl.GL20.glVertexAttribPointer;
-import static org.lwjgl.opengl.GL30.glBindVertexArray;
-
-import org.lwjgl.opengl.GL15;
-import org.lwjgl.opengl.GL20;
-import org.lwjgl.opengl.GL30;
-
 import far.math.vec.Vec2f;
 import gameengine.objects.Component;
 import gameengine.objects.ComponentType;
 import gameengine.systems.graphics.Mesh;
-import gameengine.systems.graphics.Shader;
 import gameengine.systems.graphics.Texture;
 
 /**
@@ -40,9 +20,6 @@ public class Renderable extends Component {
 	private Mesh mesh;
 	private String tex;
 
-	/**
-	 * @param type
-	 */
 	public Renderable(String texture, Transform transform) {
 		super(ComponentType.RENDERABLE);
 		this.transform = transform;
@@ -50,7 +27,6 @@ public class Renderable extends Component {
 		this.texture = new Texture(tex);
 
 		mesh = Mesh.Quad();
-
 	}
 
 	public Renderable(String texture, Transform transform, Vec2f repeat) {

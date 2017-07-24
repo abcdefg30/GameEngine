@@ -1,6 +1,3 @@
-/**
- * 
- */
 package gameengine.components;
 
 import java.util.HashSet;
@@ -125,11 +122,16 @@ public class PhysicComponent extends Component {
 		addCollisionListener(g);
 	}
 
+	JumpHelper helper;
 	public void allowJumping(float jumpForce, int duration, int jumpKey) {
-		JumpHelper h = new JumpHelper(jumpForce, duration);
-		h.JumpKey = jumpKey;
-		addUpdateListener(h);
-		addCollisionListener(h);
+		helper = new JumpHelper(jumpForce, duration);
+		helper.JumpKey = jumpKey;
+		addUpdateListener(helper);
+		addCollisionListener(helper);
+	}
+
+	public void setJumpingSound(AudioComponent audio) {
+		helper.JumpSound = audio;
 	}
 
 	public void makeStatic() {
@@ -143,5 +145,10 @@ public class PhysicComponent extends Component {
 
 	public void setScreenCollision(boolean bol) {
 		this.screenCollision = bol;
+	}
+
+	public void removeAllListeners() {
+		CollisionListeners = new HashSet<ICollisionListener>();
+		UpdateListeners = new HashSet<IUpdateListener>();
 	}
 }
